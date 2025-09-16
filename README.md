@@ -12,11 +12,11 @@ In the top of the `LG_hub_mqtt_daemon.py`, there are variables for the MQTT cred
 To make this script run on startup, make a bat file that execute the `LG_hub_mqtt_daemon.py` script, and put it on your startup folder (`shell:startup`). It's also possible to create an executable using PyInstaller.
 
 ## Structure of the project
-I'm certainely not a developper, this project was possible only with the help of the repo mentionned above and generative AI. If you have any suggesion or question regarding the code, feel free.
+I'm certainly not a developper, this project was only possible with the help of the repo mentionned above and generative AI. If you have any suggesion or question regarding the code, feel free.
 
 I constructed this project around 2 mains script : `LG_hub_devices_battery_info.py` and `LG_hub_mqtt_daemon.py`
 ### - LG_hub_devices_battery_info.py
-This code talk to the private G Hub api using WebSocket connection. It has 2 mains functions :
+This code talk to the private G Hub api using WebSocket connection. It has 2 main functions :
 <details><summary>get_all_devices_info() : retrieve all the data from devices in a JSON format (example with Pro X Wireless & G502 Hero inside G Hub)</summary>
   
   ```json
@@ -358,7 +358,7 @@ This code talk to the private G Hub api using WebSocket connection. It has 2 mai
   ```
 
 </details>
-<details><summary>get_data() : retreive only the battery information (Python dict returned with only Pro X Wireless because it's the only battery-powered device)</summary>
+<details><summary>get_data() : retreive only the battery information (formated Python dict returned with only Pro X Wireless because it's the only battery-powered device)</summary>
   
   ```python
 {'PRO X WIRELESS': {'model': None, 'state': 'NOT_CONNECTED', 'percentage': 98, 'charging': False}}
@@ -366,23 +366,23 @@ This code talk to the private G Hub api using WebSocket connection. It has 2 mai
 </details>
 
 ### - LG_hub_mqtt_daemon.py
-This one is in charge of connecting to MQTT broker, call the get_data() function every 5 seconds, and publish the result on the MQTT queue. It also create and publish discovery for Home Assistant to automatically add device in MQTT integration
+This one is in charge of connecting to the MQTT broker, call the get_data() function every 5 seconds, and publish the result to the MQTT queue. It also create and publish discovery packet for Home Assistant to automatically add devices in MQTT integration.
 
 ## Result
 Device in the MQTT queue (MQTT explorer)
 
-<img width="238" height="108" alt="image" src="https://github.com/user-attachments/assets/3c4c4b49-7bb8-492e-abed-297506762413" />
+<img width="214" height="107" alt="image" src="https://github.com/user-attachments/assets/8d1a438c-57bd-4ed3-b6cd-cd612ffcb8a7" />
 
 Device automatically discovered in Home Assistant
 
-<img width="1635" height="648" alt="image" src="https://github.com/user-attachments/assets/9287e37d-9923-48af-a42e-9066dc65ae8b" />
+<img width="1617" height="598" alt="image" src="https://github.com/user-attachments/assets/71dc8ba4-24c4-4c58-9e69-218a8c74f053" />
 
 ## Bonus - Automation to change Windows audio source when headset is connected/disconnected
 ⚠️ You need to have setup HASS.Agent on your Windows
 
-In HASS.Agent app, create 2 commands for switching audio source with the name of your audio sources. These should be in button entity type
+In HASS.Agent app, create 2 commands for switching audio source with the name of your audio sources. These should be in entity type "button"
 
-<img width="854" height="84" alt="image" src="https://github.com/user-attachments/assets/f3f0dc25-0b50-4f5a-aafa-c35a393bbf9f" />
+<img width="850" height="83" alt="image" src="https://github.com/user-attachments/assets/e92938fc-9538-4d14-895e-c030ceb35d57" />
 
 Paste and customize this automation
 
