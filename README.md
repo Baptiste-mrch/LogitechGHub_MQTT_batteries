@@ -1,5 +1,5 @@
 # LogitechGHub_MQTT_batteries
-Retrieve batteries status of Logtech devices through G Hub into MQTT (useful in HomeAssistant)
+Retrieve batteries status of Logitech devices through G Hub into MQTT (useful in HomeAssistant)
 
 ## Goal of the project
 I recently got a wireless Logitech headset from which I want to automate some actions based on it's data. After some research, it appears that the G Hub app don't have any public API from which we can talk to.
